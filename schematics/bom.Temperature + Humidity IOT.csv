@@ -1,0 +1,15 @@
+"null","Sourced","Placed","References","Value","Footprint","Quantity"
+1,"","","C2, C6, C7, C9","100n","C_0402_1005Metric_Pad0.74x0.62mm_HandSolder",4
+2,"","","C1, C5, C8","22u","C_0402_1005Metric_Pad0.74x0.62mm_HandSolder",3
+3,"","","C3","4u7","C_0402_1005Metric_Pad0.74x0.62mm_HandSolder",1
+4,"","","R1, R2","5K1","R_0402_1005Metric_Pad0.72x0.64mm_HandSolder",2
+5,"","","R3, R6","10K","R_0402_1005Metric_Pad0.72x0.64mm_HandSolder",2
+6,"","","R4, R5","22R","R_0402_1005Metric_Pad0.72x0.64mm_HandSolder",2
+7,"","","U1","USBLC6-2P6","SOT-666",1
+8,"","","U2","ESP32-WROOM-32D","ESP32-WROOM-32D",1
+9,"","","U3","CP2104","QFN-24-1EP_4x4mm_P0.5mm_EP2.6x2.6mm",1
+10,"","","U4","DHT11","Aosong_DHT11_5.5x12.0_P2.54mm",1
+11,"","","F1","Polyfuse","Fuse_1206_3216Metric_Pad1.42x1.75mm_HandSolder",1
+12,"","","FB1","BLM21PG221","L_0603_1608Metric_Pad1.05x0.95mm_HandSolder",1
+13,"","","Q1","UMH3N","SOT-363_SC-70-6",1
+14,"","","J1","USB_C","USB_C_Receptacle_HRO_TYPE-C-31-M-12",1

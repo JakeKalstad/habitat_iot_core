@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Smart Node Admin Panel</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f0f0f0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            color: #333;
+            margin: 0;
+            padding: 2%;
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-family: 'Roboto', sans-serif;
+            font-size: 3rem;
+            color: #333;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        h2 {
+            font-size: 2em
+        }
+
+        h3 {
+            font-size: 1.5em
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        p {
+            text-align: center;
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+
+        hr {
+            border: none;
+            height: 2px;
+            background-color: #007bff;
+            margin: 40px 0;
+        }
+
+        form {
+            width: 300px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+        }
+
+        input[type="checkbox"] {
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            width: 20px;
+            height: 20px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            margin-right: 10px;
+            cursor: pointer;
+            transition: border-color 0.3s ease;
+        }
+
+        input[type="checkbox"]:checked {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+
+        input[type="checkbox"]:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.3);
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        .select-wrapper {
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        select {
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #fff;
+            cursor: pointer;
+            font-size: 16px;
+            color: #333;
+        }
+
+        .select-wrapper::after {
+            content: '\25BC';
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+            pointer-events: none;
+        }
+
+        select:focus {
+            outline: none;
+            border-color: #007bff;
+            box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.3);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            max-width:320px; 
+            margin-left: auto;
+            margin-right: auto;
+            border: 3px solid #f6fff299;
+        }
+
+        thead {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        th {
+            padding: 15px;
+            text-align: left;
+        }
+
+        tbody tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        td {
+            padding: 15px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        tbody tr:hover {
+            background-color: #ddd;
+        }
+    </style>
+</head>
+
+<body>
+    <div style="text-align:center">
+        <div id="logo">
+            <h1>🦾</h1>
+        </div>
+        <h1>Manage Your Smart Device</h1>
+        <div class="content">
+            <h2>✅ This device is connected</h2>
+            {SPECS}
+            <div style="display: grid;grid-template-columns: auto auto auto">
+                <div style="display:inline-grid">
+                    <form method="POST" action="/set_device_data">
+                        <h3>Device Information</h3>
+                        <label for="device_name">Device Name</label><br>
+                        <input type="text" id="device_name" value="{DEVICE_NAME}" name="device_name"><br><br>
+                        <label for="device_location">Device Location (Bedroom, Livingroom, Coordinates, Etc)</label><br>
+                        <input type="text" id="device_location" value="{DEVICE_LOCATION}" name="device_location"><br><br>
+                        <input type="submit" value="Update Device Settings">
+                    </form>
+                </div>
+                <div style="display:inline-grid">
+                    <form method="POST" action="/set_network">
+                        <h3>Wireless Network Information</h3>
+                        <label for="textbox1">SSID</label><br>
+                        <div class="select-wrapper">
+                            {OPTIONS}
+                        </div>
+                        <label for="password">Preshared Key</label><br>
+                        <input type="password" id="password" value="{SSID_KEY}" name="password"><br><br>
+                        <input type="submit" value="Update Wireless Credentials">
+                    </form>
+                    <form method="POST" action="/clear_network">
+                        <input type="submit" style="background-color: rgba(255, 94, 94, 0.315);"
+                            value="Clear Network Credentials">
+                    </form>
+                </div>
+                <div style="display:inline-grid">
+                    <form method="POST" action="/set_mqtt">
+                        <h3>MQTT Information</h3>
+                        <label for="mqtt_url">MQTT URL (mqtt://192.168.0.12:1883)</label><br>
+                        <input type="text" id="mqtt_url" value="{MQTT_URL}" name="mqtt_url"><br><br>
+                        <label for="mqtt_user">MQTT username</label><br>
+                        <input type="text" id="mqtt_user" value="{MQTT_USER}" name="mqtt_user"><br><br>
+                        <label for="mqtt_password">MQTT Password</label><br>
+                        <input type="text" id="mqtt_password" value="{MQTT_PASSWORD}" name="mqtt_password"><br><br>
+                        <label for="mqtt_enable">Enable MQTT Communication</label><br>
+                        <input type="checkbox" id="mqtt_enable" {MQTT_ENABLED} name="mqtt_enable"><br><br>
+                        <input type="submit" value="Update MQTT Settings">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

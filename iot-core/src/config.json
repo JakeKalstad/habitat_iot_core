@@ -1,0 +1,110 @@
+{
+    "id": "proto-1",
+    "version": "alpha",
+    "model": "esp32-wroom",
+    "features": {
+        "bare": {
+            "name": "bare",
+            "description": "A bare bones sensorless board that will operate the firmware, allow setup, configuration and management as well as send health check pings to the hub as string message data",
+            "connection_type": "none",
+            "hardware_compatible": [],
+            "pins": {}
+        },
+        "motor": {
+            "name": "motor controller",
+            "connection_type": "Pin",
+            "description": "Speed controllable motors",
+            "hardware_compatible": [
+                "HW-095"
+            ],
+            "pins": {}
+        },
+        "display": {
+            "name": "Display Screen",
+            "connection_type": "Pin",
+            "description": "Writeable display screen",
+            "hardware_compatible": [
+                "PCD8544"
+            ],
+            "pins": {
+                "clk": 18,
+                "din": 23,
+                "dc": 4,
+                "cs": 15,
+                "reset": 2,
+                "light": 13
+            }
+        },
+        "air_quality": {
+            "name": "Air Quality",
+            "description": "C02 and TVOC readings",
+            "connection_type": "I2C",
+            "hardware_compatible": [
+                "SGP30"
+            ],
+            "pins": {
+                "sda": 25,
+                "scl": 22
+            },
+            "address": "0x58"
+        },
+        "temp_humidity": {
+            "name": "Temp Humidity",
+            "description": "Temperature and Humidity readings",
+            "connection_type": "Pin",
+            "hardware_compatible": [
+                "DHT11",
+                "DHT12"
+            ],
+            "pins": {
+                "sda": 5
+            }
+        },
+        "water_sensor": {
+            "name": "Water Sensor",
+            "description": "Water detection sensor",
+            "connection_type": "ADC",
+            "hardware_compatible": [
+                "FC-28"
+            ],
+            "pins": {
+                "adc": 32
+            }
+        },
+        "reed_switch": {
+            "name": "Reed Switch, Open/Close Detection",
+            "description": "Detects whether magnet is next to the sensor to be used in open or closed detection systems",
+            "connection_type": "Pin",
+            "hardware_compatible": [
+                "REED"
+            ],
+            "pins": {
+                "sda": 19
+            }
+        },
+        "motion_sensor": {
+            "name": "Motion Detection",
+            "description": "Capable of detecting and reporting motion",
+            "connection_type": "Pin",
+            "hardware_compatible": [
+                "HC-SR04"
+            ],
+            "pins": {
+                "sda": 20
+            }
+        },
+        "temp_pressure": {
+            "name": "Temperature and atmospheric pressure sensor",
+            "description": "Capable of reading temperature and pressure",
+            "connection_type": "I2C",
+            "hardware_compatible": [
+                "BPM280"
+            ],
+            "pins": {
+                "sda": 33,
+                "scl": 32
+            },
+            "address": "0x76"
+        }
+    }
+}

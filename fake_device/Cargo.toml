@@ -1,0 +1,20 @@
+[package]
+name = "fake_device"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+[target.x86_64-unknown-linux-musl]
+rustflags = ["-C", "target-feature=+crt-static"]
+
+[dependencies]
+libmdns="*"
+uuid={version="*", features=["v4"]}
+rust-mqtt="*"
+hostname={version="*", features=["set"]}
+tokio = { version = "*", features = ["full"] }
+embedded-io-adapters = { version = "*", features = ["tokio-1"] }
+rand="*"
+iot-common={git = "ssh://git@bitbucket.org/swagonomics/common.git", branch = "master" }
+serde_json = {version= "*"}
+dotenv="*"
