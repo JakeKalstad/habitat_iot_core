@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: habitat-fake-device
+  labels:
+    app: habitat-fake-device
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: habitat-fake-device
+  template:
+    metadata:
+      labels:
+        app: habitat-fake-device
+    spec:
+      containers:
+        - name: habitat-fake-device
+          image: habitat-fake-device:local
+          env:
+            - name: MOSQUITTO_HOST
+              value: "mosquitto-service"
+            - name: MOSQUITTO_PORT
+              value: "1883"
+            - name: DEVICE_COUNT
+              value: "5"
+      volumes:
+        - name: db-storage
+          emptyDir: {}

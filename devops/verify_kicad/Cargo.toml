@@ -1,0 +1,7 @@
+[package]
+name = "verify_kicad"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+kicad-api-rs={ path="../kicad-rs"}

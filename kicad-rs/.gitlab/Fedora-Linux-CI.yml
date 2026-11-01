@@ -1,0 +1,14 @@
+##########################################################################
+# Build KiCad-Rust on Fedora
+##########################################################################
+build-job:
+  stage: build
+  image: $DEFAULT_FEDORA_IMAGE
+  before_script:
+    - git submodule update --init
+    - dnf -y install protobuf-compiler cargo cmake
+    - pip3 install pre-commit
+    - pre-commit install
+  script:
+    - cargo build
+    #- cargo run --example version # kicad needs to be builded and started before executing this

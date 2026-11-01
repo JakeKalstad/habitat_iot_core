@@ -1,0 +1,17 @@
+[supervisord]
+nodaemon=true
+
+[program:nginx]
+command=/usr/sbin/nginx -g 'daemon off;'
+
+[program:postgresql]
+command=/usr/lib/postgresql/12/bin/postgres -D /var/lib/postgresql/12/main -c config_file=/etc/postgresql/12/main/postgresql.conf
+
+[program:mosquitto]
+command=/usr/sbin/mosquitto -c /etc/mosquitto/mosquitto.conf
+
+[program:minio]
+command=minio server /data
+directory=/data
+autostart=true
+autorestart=true

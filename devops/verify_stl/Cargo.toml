@@ -1,0 +1,10 @@
+[package]
+name = "verify_stl"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+stl_io="*"
+serde_json="*"
+serde = { version = "*", features = ["derive"] }
+common = {path="../common"}
